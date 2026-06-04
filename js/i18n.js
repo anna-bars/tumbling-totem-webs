@@ -3,9 +3,9 @@
     const translations = {
         nl: {
             // Hero
-            'hero-est':         'EST. 2026',
-            'hero-scroll':      'Scroll ↓',
-            'hero-location':    'Berlin / Remote',
+            'hero-est':         'EST. 2025',
+            'hero-scroll':      'Scroll to Explore↓',
+            'hero-location':    'Belgium/Remote',
 
             // About
             'about-h1':         'Duik dieper\nen ontdek de grenzeloze wereld\nvan 3D Animatie.',
@@ -47,9 +47,9 @@
         },
         en: {
             // Hero
-            'hero-est':         'EST. 2026',
-            'hero-scroll':      'Scroll ↓',
-            'hero-location':    'Berlin / Remote',
+            'hero-est':         'EST. 2025',
+            'hero-scroll':      'Scroll to Explore↓',
+            'hero-location':    'Belgium/Remote',
 
             // About
             'about-h1':         'Dive deeper\nand discover the boundless world\nof 3D Animation.',

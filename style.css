@@ -235,7 +235,8 @@ height: 108svh;
 h1 {
     color: white;
     font-weight: 500;
-    font-size: 48px;
+    font-size: 48px;  
+    font-family: 'ADVENTURES';
 }
 .about-second-cont {
     width: 44%;
