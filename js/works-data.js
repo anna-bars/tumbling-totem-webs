@@ -1,21 +1,3 @@
-/* =========================================================
-   works-data.js — ԿԼԻԵՆՏԸ ՓՈԽՈՒՄ Է ՄԻԱՅՆ ԱՅՍ ՖԱՅԼԸ
-   =========================================================
-   WORKS1 = "Featured Works" (վերևի slider)
-   WORKS2 = "More Works"    (ներքևի slider)
-
-   Ամեն object-ի դաշտեր:
-     image    — նկարի հղում (./img/featured-works/...)
-     date     — ամսաթիվ
-     index    — INDEX.01 / INDEX.02 ...
-     cat_key  — կատեգորիա (cat-recovery / cat-mystic / cat-ancient)
-     title_nl / title_en — վերնագիր
-     desc_nl  / desc_en  — նկարագիր (overlay-ում)
-     tag1_nl  / tag1_en  — առաջին tag
-     tag2                — միջին tag (երկու լեզվով նույնն է)
-     tag3_nl  / tag3_en  — երրորդ tag
-========================================================= */
-
 const WORKS1 = [
     {
         image:    './img/featured-works/work-2.webp',
@@ -112,10 +94,6 @@ const WORKS2 = [
     },
 ];
 
-/* =========================================================
-   buildTrackHTML — internal helper, used by i18n.js
-   Do not edit below this line.
-========================================================= */
 function buildTrackHTML(worksArray, lang, translations) {
     const t = translations[lang];
     return worksArray.map((w, i) => {

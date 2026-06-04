@@ -31,7 +31,6 @@
     `;
     document.head.appendChild(style);
 
-    // compass cursor — overlays on top of global cursor when inside contact
     const cursor = document.createElement('div');
     cursor.className = 'ct-cursor';
     cursor.innerHTML = `
@@ -51,7 +50,6 @@
     `;
     document.body.appendChild(cursor);
 
-    // dots trail
     const DOT_COUNT = 8;
     const dots = [];
 
@@ -105,12 +103,9 @@
         cursor.style.top  = my + 'px';
     }, { passive: true });
 
-    // Use Intersection Observer so visibility tracks scroll,
-    // not just mouseenter/mouseleave (which fires late on fast scroll)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
-                // section scrolled out — hide everything immediately
                 inside = false;
                 cursor.classList.remove('visible');
                 dots.forEach(d => d.style.opacity = '0');

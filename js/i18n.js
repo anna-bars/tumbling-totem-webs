@@ -91,10 +91,8 @@
         }
     };
 
-    // ── State ────────────────────────────────────────────────────────────
     let currentLang = localStorage.getItem('tt-lang') || 'nl';
 
-    // ── Apply translations ───────────────────────────────────────────────
     function applyLang(lang) {
         const t = translations[lang];
         document.documentElement.lang = lang;
@@ -104,7 +102,6 @@
             const el = document.querySelector(sel);
             if (!el) return;
             if (attr) { el.setAttribute(attr, t[key]); return; }
-            // Preserve <br> for multiline keys (use \n → <br>)
             el.innerHTML = t[key].replace(/\n/g, '<br>');
         }
         function setAll(sel, key) {
@@ -123,7 +120,7 @@
         set('[data-i18n="about-p"]',       'about-p');
         set('[data-i18n="about-explore"]', 'about-explore');
 
-        // about.js splits h1 words on load; after innerHTML replace we must re-run it
+        // about.js 
         if (typeof window.reinitAboutAnimation === 'function') {
             window.reinitAboutAnimation();
         }
@@ -137,7 +134,7 @@
         // Drag hints
         setAll('[data-i18n="drag-hint"]', 'drag-hint');
 
-        // Work tracks — re-render from works-data.js + reinit sliders
+        // Work tracks
         const track1 = document.getElementById('worksTrack');
         const track2 = document.getElementById('worksTrack2');
         if (track1 && typeof buildTrackHTML === 'function') {
@@ -147,7 +144,7 @@
             track2.innerHTML = buildTrackHTML(WORKS2, lang, translations);
         }
 
-        // Re-init WorksSlider on each section after re-render
+        // Re-init WorksSlider 
         if (typeof WorksSlider === 'function') {
             // Remove old cursor elements first
             document.querySelectorAll('.works-cursor').forEach(c => c.remove());
@@ -169,7 +166,6 @@
         localStorage.setItem('tt-lang', lang);
     }
 
-    // ── Build toggle button ──────────────────────────────────────────────
     function buildToggle() {
         const btn = document.createElement('button');
         btn.id = 'tt-lang-toggle';
@@ -187,7 +183,6 @@
             applyLang(currentLang === 'nl' ? 'en' : 'nl');
         });
 
-        // Styles
         const style = document.createElement('style');
         style.textContent = `
             #tt-lang-toggle {
@@ -240,7 +235,6 @@
         document.body.appendChild(btn);
     }
 
-    // ── Init ─────────────────────────────────────────────────────────────
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => { buildToggle(); applyLang(currentLang); });
     } else {

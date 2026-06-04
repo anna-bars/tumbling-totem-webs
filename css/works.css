@@ -50,7 +50,6 @@
     overflow: hidden;
     position: relative;
 
-    /* background-image is set via works-data.js inline style */
     background-size: cover;
     background-position: center;
 
@@ -165,16 +164,11 @@
     rgba(0,0,0,0));
 }
 
-/* item-2 and item-3 backgrounds are now managed via works-data.js (inline style) */
-
 .drag-hint {
     display: none !important;
 }
 
 
-/* =========================================
-   CUSTOM CURSOR
-========================================= */
 .works-cursor {
     position: fixed;
     top: 0;
@@ -273,9 +267,6 @@
 }
 
 
-/* =========================================
-   CLICK OVERLAY
-========================================= */
 .work-item-click-overlay {
     position: absolute;
     inset: 0;
@@ -315,7 +306,6 @@
     line-height: 1.5;
 }
 
-/* REVEALED — click-ով բացվում է ցանկացած slide-ի վրա */
 .featured-work-item.is-revealed .work-item-click-overlay {
     background: rgba(0, 0, 0, 0.62);
 }

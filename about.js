@@ -1,6 +1,4 @@
 (function () {
-
-    /* ── 1. Split h1 words only — p and span stay intact ───────────────── */
     function splitWords(el) {
         const nodes = Array.from(el.childNodes);
         el.innerHTML = '';
@@ -26,12 +24,9 @@
         });
     }
 
-    /* ── 2. Scroll listener reference (so we can remove & re-add) ───────── */
     let scrollHandler = null;
 
-    /* ── 3. Main init / reinit ──────────────────────────────────────────── */
     function init() {
-        // Remove old scroll listener if re-initing
         if (scrollHandler) {
             window.removeEventListener('scroll', scrollHandler, { passive: true });
             scrollHandler = null;
@@ -99,10 +94,8 @@
         update();
     }
 
-    /* ── 4. Expose reinit for i18n.js ───────────────────────────────────── */
     window.reinitAboutAnimation = init;
 
-    /* ── 5. First run ───────────────────────────────────────────────────── */
     init();
 
 })();

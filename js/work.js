@@ -1,8 +1,3 @@
-/* =========================================================
-   WorksSlider — reusable class, supports multiple instances
-   Usage: new WorksSlider(sectionEl)
-========================================================= */
-
 class WorksSlider {
 
     constructor(section) {
@@ -19,7 +14,6 @@ class WorksSlider {
         this.isHoveringActive = false;
         this._hoverTimer  = null;
 
-        // ── Inject overlays into ALL slides ─────────────────────
         this.slides.forEach(slide => {
             const title = slide.dataset.overlayTitle || '';
             const desc  = slide.dataset.overlayDesc  || '';
@@ -31,7 +25,6 @@ class WorksSlider {
             slide.appendChild(ov);
         });
 
-        // ── Cursor ───────────────────────────────────────────────
         this.cursor = document.createElement("div");
         this.cursor.className = "works-cursor";
         this.cursor.innerHTML = `<span class="works-cursor-label">HOLD &<br>DRAG</span>`;
@@ -47,10 +40,8 @@ class WorksSlider {
         this.centerSlide(false);
     }
 
-    // ── Helpers ─────────────────────────────────────────────────
     lerp(a, b, t) { return a + (b - a) * t; }
 
-    // ── Cursor RAF ──────────────────────────────────────────────
     _animateCursor() {
         this.smoothX = this.lerp(this.smoothX, this.cursorX, 0.12);
         this.smoothY = this.lerp(this.smoothY, this.cursorY, 0.12);
@@ -59,7 +50,6 @@ class WorksSlider {
         requestAnimationFrame(() => this._animateCursor());
     }
 
-    // ── Cursor label ─────────────────────────────────────────────
     _setLabel(text) {
         this.cursorLabel.style.opacity = '0';
         setTimeout(() => {
@@ -69,7 +59,6 @@ class WorksSlider {
     }
 
     _onEnterActive() {
-        // Մտնելիս — HOLD & DRAG, 2 վայրկյան հետո CLICK
         this._setLabel('HOLD &<br>DRAG');
         clearTimeout(this._hoverTimer);
         this._hoverTimer = setTimeout(() => {
@@ -84,7 +73,6 @@ class WorksSlider {
         this._setLabel('HOLD &<br>DRAG');
     }
 
-    // ── Slide logic ─────────────────────────────────────────────
     updateClasses() {
         this.slides.forEach(s =>
             s.classList.remove("is-active", "is-prev", "is-next", "is-revealed"));
@@ -105,7 +93,6 @@ class WorksSlider {
             : "none";
         this.track.style.transform = `translateX(${-offset}px)`;
         this.updateClasses();
-        // Slide-ը փոխվեց — reset
         this.isHoveringActive = false;
         clearTimeout(this._hoverTimer);
         this._setLabel('HOLD &<br>DRAG');
@@ -145,7 +132,6 @@ class WorksSlider {
         }, { once: true });
     }
 
-    // ── Click toggle ─────────────────────────────────────────────
     _toggleOverlay(clickedSlide) {
         const isRevealed = clickedSlide.classList.contains('is-revealed');
         this.slides.forEach(s => s.classList.remove('is-revealed'));
@@ -154,7 +140,6 @@ class WorksSlider {
         }
     }
 
-    // ── Events ───────────────────────────────────────────────────
     _bindEvents() {
         const zone = this.cursorZone;
 
@@ -228,7 +213,6 @@ class WorksSlider {
             this.isDragging = false;
             this._clickTarget = null;
 
-            // Re-check hover after mouseup
             const active = this.slides[this.currentIndex];
             if (active && this.isHoveringActive) {
                 this._onEnterActive();
@@ -261,8 +245,3 @@ class WorksSlider {
         window.addEventListener("resize", () => this.centerSlide(false));
     }
 }
-
-/* =========================================================
-   INIT — կառավարվում է i18n.js-ի կողմից applyLang()-ում
-   (tracks-ը render-ից հետո WorksSlider-ը init կլինի)
-========================================================= */

@@ -2,17 +2,9 @@
     .layer-4-temple {
         width: 34%;
     }
-    .layer-5-jungle-mid {
-        /* bottom: -16%; */
-        /* border-bottom: 38px solid #122E39; */
-    }
-    .layer-6-jungle-front {
-        /* bottom: -22%; */
-    } 
     .layer-7-foreground {
         width: 100%;
         position: absolute;
-        /* bottom: -148%; */
         z-index: 7;
     }
     .about-section-top-divider.scrolled {
@@ -328,7 +320,6 @@ top: auto;
     padding: 70px 5.5%;
 }
     .back-arch-lighter-10 {
-        /* width: 86%; */
         top: 7%;
         left: 8%;
         height: 74%;
@@ -478,7 +469,6 @@ top: auto;
         font-size: 10px;
     }
 }
-/* iPad Portrait-ի նման */
 @media (max-width: 768px) and (min-height: 900px) {
     .layer-1-sky {
         bottom: 32%;

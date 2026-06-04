@@ -169,7 +169,6 @@
     `;
     document.head.appendChild(style);
 
-    // ── Instant dark body so NO white flash before JS runs ──────────────
     document.documentElement.style.background = '#060e10';
     document.body.classList.add('tt-loading');
 
@@ -228,7 +227,6 @@
     `;
     document.body.prepend(loader);
 
-    // ── Particle canvas ─────────────────────────────────────────────────
     const canvas = document.getElementById('tt-canvas');
     const ctx    = canvas.getContext('2d');
 
@@ -266,7 +264,6 @@
     }
     drawParticles();
 
-    // ── Progress ────────────────────────────────────────────────────────
     const bar = document.getElementById('ttBar');
     const pct = document.getElementById('ttPct');
     let loaded = 0;
@@ -287,12 +284,10 @@
         img.src = src;
     });
 
-    // ── Reveal ──────────────────────────────────────────────────────────
     let revealed = false;
     function scheduleReveal() {
         if (revealed) return;
         revealed = true;
-        // min 1.5s so preloader is always visible even on fast connections
         const elapsed = Date.now() - startTime;
         const remaining = Math.max(1500 - elapsed, 300);
         setTimeout(() => {

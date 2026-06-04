@@ -35,7 +35,6 @@ window.addEventListener("scroll", () => {
     targetScroll = window.scrollY;
 });
 
-// ── LOGO interactions ──────────────────────────────────────────────
 const logo = document.querySelector(".logo");
 
 if (logo) {
@@ -57,9 +56,8 @@ if (logo) {
         logo.style.transform = "translate(0px, 0px) scale(1)";
     });
 
-    // Proximity — works from far, no :hover gate
     document.addEventListener("mousemove", (e) => {
-        if (isHovering) return; // magnetic handles it when on logo
+        if (isHovering) return; 
 
         const rect = logo.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
@@ -69,7 +67,7 @@ if (logo) {
 
 if (dist < radius) {
     const pull = 1 - dist / radius;
-    const pullFast = Math.pow(pull, 0.5); // արագ աճ հեռվից
+    const pullFast = Math.pow(pull, 0.5); 
     const glowPx = pullFast * 28;
     const bright = 1 + pullFast * 0.25;
     logo.style.transform = `scale(${1 + pullFast * 0.015})`;
@@ -80,7 +78,6 @@ if (dist < radius) {
 }
     });
 
-    // Click pulse
     logo.addEventListener("click", () => {
         logo.style.transition = "transform 0.1s ease, filter 0.1s ease";
         logo.style.transform = "scale(0.97)";
@@ -92,7 +89,7 @@ if (dist < radius) {
         }, 120);
     });
 }
-// ── Main animation loop ────────────────────────────────────────────
+
 function animate() {
     requestAnimationFrame(animate);
 
@@ -118,7 +115,6 @@ function animate() {
     apply(layers.jungleFront, depth.jungleFront);
     apply(layers.foreground, depth.foreground);
 
-    // Leaves — much more subtle now
     if (layers.leavesLeft) {
         layers.leavesLeft.style.transform = `translate(${mouseX * 4 - progress * 40}px, ${-progress * 90}px) scale(1.05)`;
     }
